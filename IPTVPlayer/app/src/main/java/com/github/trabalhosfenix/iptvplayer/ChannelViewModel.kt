@@ -1,4 +1,4 @@
-package com.seunome.iptvplayer
+package com.github.trabalhosfenix.iptvplayer
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

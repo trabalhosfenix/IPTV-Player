@@ -5,12 +5,13 @@ plugins {
 }
 
 android {
-    compileSdk 34
+    namespace 'com.github.trabalhosfenix.iptvplayer'
+    compileSdk 33
 
     defaultConfig {
-        applicationId "com.seunome.iptvplayer"
+        applicationId "com.github.trabalhosfenix.iptvplayer"
         minSdk 24
-        targetSdk 34
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 

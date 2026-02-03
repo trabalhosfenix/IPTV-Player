@@ -1,4 +1,4 @@
-package com.seunome.iptvplayer
+package com.github.trabalhosfenix.iptvplayer
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

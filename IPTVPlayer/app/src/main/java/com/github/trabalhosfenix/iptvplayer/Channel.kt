@@ -1,4 +1,4 @@
-package com.seunome.iptvplayer
+package com.github.trabalhosfenix.iptvplayer
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

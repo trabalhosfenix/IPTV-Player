@@ -1,4 +1,4 @@
-package com.seunome.iptvplayer
+package com.github.trabalhosfenix.iptvplayer
 
 object M3UParser {
     fun parse(content: String): List<Channel> {
