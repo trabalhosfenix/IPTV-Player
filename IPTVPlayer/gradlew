@@ -3,6 +3,8 @@
 # Gradle start up script for UN*X
 #
 
+set -e
+
 # Attempt to set APP_HOME
 PRG="$0"
 while [ -h "$PRG" ] ; do
@@ -31,8 +33,38 @@ else
     JAVACMD="java"
 fi
 
-# Gradle wrapper
-CLASSPATH=$APP_HOME/gradle/wrapper/gradle-wrapper.jar
+# Setup the wrapper directory
+WRAPPER_DIR="$APP_HOME/gradle/wrapper"
+WRAPPER_JAR="$WRAPPER_DIR/gradle-wrapper.jar"
+WRAPPER_PROPS="$WRAPPER_DIR/gradle-wrapper.properties"
+
+# Download gradle wrapper if it doesn't exist
+if [ ! -f "$WRAPPER_JAR" ]; then
+    mkdir -p "$WRAPPER_DIR"
+    echo "Downloading gradle wrapper..."
+    
+    # Read the gradle URL from properties
+    if [ -f "$WRAPPER_PROPS" ]; then
+        GRADLE_URL=$(grep distributionUrl "$WRAPPER_PROPS" | cut -d'=' -f2 | sed 's/\\/\//g')
+    else
+        GRADLE_URL="https://services.gradle.org/distributions/gradle-7.5-bin.zip"
+    fi
+    
+    TEMP_ZIP="/tmp/gradle-wrapper.zip"
+    curl -L "$GRADLE_URL" -o "$TEMP_ZIP"
+    
+    TEMP_DIR="/tmp/gradle-extracted"
+    rm -rf "$TEMP_DIR"
+    mkdir -p "$TEMP_DIR"
+    unzip -q "$TEMP_ZIP" -d "$TEMP_DIR"
+    
+    # Find and copy the wrapper jar
+    find "$TEMP_DIR" -name "gradle-wrapper.jar" -exec cp {} "$WRAPPER_JAR" \;
+    
+    # Cleanup
+    rm -f "$TEMP_ZIP"
+    rm -rf "$TEMP_DIR"
+fi
 
 # Execute Gradle
-exec "$JAVACMD" $DEFAULT_JVM_OPTS -classpath "$CLASSPATH" org.gradle.wrapper.GradleWrapperMain "$@"
+exec "$JAVACMD" $DEFAULT_JVM_OPTS -classpath "$WRAPPER_JAR" org.gradle.wrapper.GradleWrapperMain "$@"
