@@ -26,6 +26,7 @@ jobs:
     
     - name: Build Debug APK
       run: |
+        cd IPTVPlayer
         chmod +x gradlew
         ./gradlew assembleDebug
     
@@ -33,14 +34,15 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: iptv-player-debug
-        path: app/build/outputs/apk/debug/*.apk
+        path: IPTVPlayer/app/build/outputs/apk/debug/*.apk
     
     - name: Build Release APK
       run: |
+        cd IPTVPlayer
         ./gradlew assembleRelease
       
     - name: Upload APK Release
       uses: actions/upload-artifact@v3
       with:
         name: iptv-player-release
-        path: app/build/outputs/apk/release/*.apk
+        path: IPTVPlayer/app/build/outputs/apk/release/*.apk
