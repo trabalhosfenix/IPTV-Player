@@ -1,17 +1,43 @@
 #!/bin/bash
-#
-# Gradle start up script for UN*X
-#
 
 set -e
 
-# Find gradle in PATH
-GRADLE_CMD=$(which gradle)
+# Determine script location
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-if [ -z "$GRADLE_CMD" ]; then
-    echo "Error: gradle not found in PATH"
-    exit 1
+# Get wrapper properties
+WRAPPER_PROPS="$SCRIPT_DIR/gradle/wrapper/gradle-wrapper.properties"
+
+if [ -f "$WRAPPER_PROPS" ]; then
+    GRADLE_URL=$(grep "^distributionUrl=" "$WRAPPER_PROPS" | cut -d'=' -f2 | sed 's/\\//g')
+else
+    GRADLE_URL="https://services.gradle.org/distributions/gradle-7.6.3-bin.zip"
 fi
 
-# Execute gradle with all arguments
-exec "$GRADLE_CMD" "$@"
+# Set up gradle home
+GRADLE_USER_HOME="${GRADLE_USER_HOME:-$HOME/.gradle}"
+WRAPPER_DIR="$GRADLE_USER_HOME/wrapper/dists"
+
+# Download and extract gradle if needed
+mkdir -p "$WRAPPER_DIR"
+
+GRADLE_VERSION=$(echo "$GRADLE_URL" | sed 's/.*gradle-\([^-]*\)-.*/\1/')
+GRADLE_DIST_DIR="$WRAPPER_DIR/gradle-$GRADLE_VERSION"
+
+if [ ! -d "$GRADLE_DIST_DIR" ]; then
+    TEMP_ZIP=$(mktemp)
+    echo "Downloading Gradle $GRADLE_VERSION..."
+    curl -L "$GRADLE_URL" -o "$TEMP_ZIP"
+    
+    TEMP_EXTRACT=$(mktemp -d)
+    unzip -q "$TEMP_ZIP" -d "$TEMP_EXTRACT"
+    
+    mkdir -p "$GRADLE_DIST_DIR"
+    mv "$TEMP_EXTRACT"/gradle-*/* "$GRADLE_DIST_DIR/"
+    
+    rm -f "$TEMP_ZIP"
+    rm -rf "$TEMP_EXTRACT"
+fi
+
+# Run gradle
+"$GRADLE_DIST_DIR/bin/gradle" "$@"
