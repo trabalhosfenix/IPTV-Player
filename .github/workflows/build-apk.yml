@@ -30,7 +30,7 @@ jobs:
       run: |
         cd IPTVPlayer
         chmod +x gradlew
-        ./gradlew assembleDebug
+        ./gradlew assembleDebug --stacktrace
     
     - name: Upload APK Debug
       uses: actions/upload-artifact@v4
@@ -41,7 +41,7 @@ jobs:
     - name: Build Release APK
       run: |
         cd IPTVPlayer
-        ./gradlew assembleRelease
+        ./gradlew assembleRelease --stacktrace
       
     - name: Upload APK Release
       uses: actions/upload-artifact@v4
