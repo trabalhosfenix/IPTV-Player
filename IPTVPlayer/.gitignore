@@ -1,0 +1,76 @@
+# Gradle files
+.gradle/
+build/
+*.apk
+*.aar
+*.ap_
+*.aab
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Log/OS Files
+*.log
+.DS_Store
+*.swp
+*.swo
+*~
+
+# Android Studio generated files and folders
+.idea/
+.classpath
+.project
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Android Studio/IntelliJ
+out/
+.idea
+*.iml
+*.iws
+*.ipr
+*.ids
+*.perspectivev3
+
+# The Android Open Source Project
+external/
+.externalNativeBuild
+.cxx/
+
+# Gradle cache
+.gradle
+
+# Intellij Idea (see https://intellij-support.jetbrains.com/hc/en-us/articles/206544839)
+.idea/modules.xml
+.idea/*.iml
+.idea/gradle.xml
+.idea/libraries
+.idea/misc.xml
+
+# Keystore files
+*.jks
+*.keystore
+
+# Google Services (e.g. APIs or Firebase)
+google-services.json
+
+# Freeline
+freeline.py
+freeline/
+freeline_files/
+
+# fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/frameit/frames.json
+fastlane/fastlane.json
+fastlane/Fastfile.json
+
+# Version control
+*~
+
+# OS-specific files
+Thumbs.db
