@@ -23,6 +23,8 @@ jobs:
     
     - name: Setup Android SDK
       uses: android-actions/setup-android@v3
+      env:
+        SKIP_JDK_VERSION_CHECK: true
     
     - name: Build Debug APK
       run: |
