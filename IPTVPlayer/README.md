@@ -1,5 +1,7 @@
 # IPTV Player
 
+[![Android CI](https://github.com/trabalhosfenix/IPTV-Player/actions/workflows/android-build.yml/badge.svg)](https://github.com/trabalhosfenix/IPTV-Player/actions/workflows/android-build.yml)
+
 Um aplicativo Android nativo para reproduzir canais IPTV a partir de arquivos M3U.
 
 ## 📋 Características

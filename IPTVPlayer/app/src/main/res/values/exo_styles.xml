@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ExoMediaButton" parent="">
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_margin">4dp</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+    </style>
+
+    <style name="ExoMediaButton.Play">
+        <item name="android:src">@drawable/exo_controls_play</item>
+        <item name="android:contentDescription">@string/exo_controls_play_description</item>
+    </style>
+
+    <style name="ExoMediaButton.Pause">
+        <item name="android:src">@drawable/exo_controls_pause</item>
+        <item name="android:contentDescription">@string/exo_controls_pause_description</item>
+    </style>
+
+    <style name="ExoMediaButton.Rewind">
+        <item name="android:src">@drawable/exo_controls_rewind</item>
+        <item name="android:contentDescription">@string/exo_controls_rewind_description</item>
+    </style>
+
+    <style name="ExoMediaButton.FastForward">
+        <item name="android:src">@drawable/exo_controls_fastforward</item>
+        <item name="android:contentDescription">@string/exo_controls_fastforward_description</item>
+    </style>
+
+</resources>

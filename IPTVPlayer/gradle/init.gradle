@@ -1,0 +1,8 @@
+// Workaround para Java 25 com Gradle 8.11
+allprojects {
+    configurations.all {
+        resolutionStrategy {
+            failOnVersionConflict()
+        }
+    }
+}
