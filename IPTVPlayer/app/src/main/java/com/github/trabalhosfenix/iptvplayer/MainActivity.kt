@@ -3,6 +3,7 @@ package com.github.trabalhosfenix.iptvplayer
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.lifecycle.ViewModelProvider
 
 class MainActivity : AppCompatActivity() {
@@ -17,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         adapter = ChannelAdapter()
 
         val recyclerView = findViewById<RecyclerView>(R.id.channelRecyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
 
         viewModel.channels.observe(this) { channels ->
